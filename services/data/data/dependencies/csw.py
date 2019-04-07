@@ -183,8 +183,8 @@ class CSWHandler:
             start {str} -- The start date of the temporal extent
             end {str} -- The end date of the temporal extent
             timestamp {str} -- The timestamp of the data version, filters by data that was available at that time.
-            updated {bool} -- If true it simulates that one file got updated.
-            deleted {bool} -- If false it Simulates that one file got deleted.
+            updated {bool} -- If true it simulates that one file got updated - deprecated.
+            deleted {bool} -- If false it Simulates that one file got deleted - deprecated.
         Returns:
             list -- The records data
         """
@@ -225,18 +225,18 @@ class CSWHandler:
                         )
                     )
                 else:
-                    logging.info("Ignored first file")
+                    logging.info("Ignored first file: {}".format(name))
             else:
-                logging.info("{} > {}".format(data_timestamp,timestamp))
+                logging.info("{} > {} : {}".format(data_timestamp, timestamp, name))
 
             if updated and first:
                 path = path + "_new"
                 name = name + "_new"
 
-                date_data_timestamp = datetime.strptime(updated, '%Y-%m-%d %H:%M:%S.%f')
+                date_data_timestamp = datetime.strptime(updated, "%Y-%m-%d %H:%M:%S.%f")
 
                 if date_data_timestamp <= date_filter_timestamp:
-                    logging.info("FIRST: Appended additional file")
+                    logging.info("FIRST: Appended additional file: {}".format(name))
                     response.append(
                         FilePath(
                             date=date,
@@ -245,7 +245,7 @@ class CSWHandler:
                             timestamp=data_timestamp
                         ))
                 else:
-                    logging.info("FIRST: {} > {}".format(data_timestamp, timestamp))
+                    logging.info("FIRST: Not Appending {} > {} : {}".format(date_data_timestamp.strftime("%Y-%m-%d %H:%M:%S.%f"), date_filter_timestamp.strftime("%Y-%m-%d %H:%M:%S.%f"), name))
 
             first = False
 
