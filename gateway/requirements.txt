@@ -11,7 +11,7 @@ click==6.7
 colorama==0.3.9
 cryptography==2.3
 enum-compat==0.0.2
-eventlet==0.21.0
+eventlet==0.31.0
 flasgger==0.8.3
 Flask==1.0.2
 flask-apispec==0.7.0
