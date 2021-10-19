@@ -7,7 +7,7 @@ setup(
     description='User Service for openEO',
     packages=find_packages(exclude=['test', 'test.*']),
     install_requires=[
-        'nameko==2.8.5',
+        'nameko==2.14.0',
         'nameko-sqlalchemy==1.3.0',
         'alembic==0.9.9',
         'marshmallow==3.0.0b8',
