@@ -1,6 +1,6 @@
 amqp==1.4.9
 anyjson==0.3.3
-certifi==2018.8.24
+certifi==2022.12.7
 cffi==1.11.5
 chardet==3.0.4
 enum-compat==0.0.2
